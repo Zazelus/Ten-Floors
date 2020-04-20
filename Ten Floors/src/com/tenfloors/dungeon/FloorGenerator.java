@@ -14,46 +14,83 @@ public class FloorGenerator {
 
 	private String[][] dungeonFloor;
 
+	private int height;
+	private int width;
+
 	/**
 	 * Creates a new FloorGenerator object.
 	 *
-	 * @param dungeonFile	is the name of the file to import the dungeon.
-	 * @throws FileNotFoundException	is thrown if the file is not found.
+	 * @param dungeonFile is the name of the file to import the dungeon.
+	 * @throws FileNotFoundException is thrown if the file is not found.
 	 */
-    public FloorGenerator(String dungeonFile) throws FileNotFoundException {
-        dungeonFloor = readDungeonFile(dungeonFile);
-    }
+	public FloorGenerator(String dungeonFile, int height, int width) throws FileNotFoundException {
+		this.height = height;
+		this.width = width;
 
-    public String[][] getDungeon() {
-        return dungeonFloor;
-    }
+		dungeonFloor = readDungeonFile(dungeonFile, this.height, this.width);
+	}
 
-    private String[][] readDungeonFile(String dungeonFile) throws FileNotFoundException {
-        String[][] floorArray = new String[20][20];
+	/**
+	 * Returns the array representing the dungeon floor.
+	 *
+	 * @return dungeonFloor array.
+	 */
+	public String[][] getDungeon() {
+		return dungeonFloor;
+	}
 
-        @SuppressWarnings("resource")
-        Scanner file = new Scanner(new File(dungeonFile));
+	/**
+	 * Returns the current dungeon's height.
+	 *
+	 * @return height as an integer.
+	 */
+	public int getDungeonHeight() {
+		return height;
+	}
 
-        int rowIndex = 0;
-        int colIndex = 0;
+	/**
+	 * Returns the current dungeon's width.
+	 *
+	 * @return width as an integer.
+	 */
+	public int getDungeonWidth() {
+		return width;
+	}
 
-        while (file.hasNextLine()) {
-        	if (colIndex == 21) {
-        		colIndex = 0;
-        		rowIndex++;
-        	}
+	/**
+	 * Returns the dungeon read from the file in array form.
+	 *
+	 * @param dungeonFile is the file to be read.
+	 * @param height      is the height of the dungeon.
+	 * @param width       is the width of the dungeon
+	 * @return the current floor in the form of an array.
+	 * @throws FileNotFoundException is thrown if the file is not found.
+	 */
+	private String[][] readDungeonFile(String dungeonFile, int height, int width) throws FileNotFoundException {
+		String[][] floorArray = new String[height][width];
 
-            String line = file.nextLine();
-            String[] lineSplit = line.split(", *");
+		Scanner file = new Scanner(new File(dungeonFile));
 
-            floorArray[rowIndex][colIndex] = lineSplit[colIndex];
+		int rowIndex = 0;
+		int colIndex = 0;
 
-            colIndex++;
-        }
+		while (file.hasNextLine()) {
+			if (colIndex == width + 1) {
+				colIndex = 0;
+				rowIndex++;
+			}
 
-        file.close();
+			String line = file.nextLine();
+			String[] lineSplit = line.split(", *");
 
-        return floorArray;
-    }
+			floorArray[rowIndex][colIndex] = lineSplit[colIndex];
+
+			colIndex++;
+		}
+
+		file.close();
+
+		return floorArray;
+	}
 
 }
