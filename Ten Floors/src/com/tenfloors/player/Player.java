@@ -1,3 +1,6 @@
+package com.tenfloors.player;
+
+import com.tenfloors.classes.*;
 
 /**
  * The Player class handles all player data and uses them to check certain

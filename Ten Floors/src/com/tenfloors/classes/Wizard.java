@@ -1,3 +1,6 @@
+package com.tenfloors.classes;
+
+import com.tenfloors.player.*;
 
 public class Wizard extends PlayerClass {
 

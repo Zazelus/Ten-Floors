@@ -1,4 +1,8 @@
+package com.tenfloors.classes;
+
 import java.util.Random;
+
+import com.tenfloors.player.*;
 
 /**
  * The Knight class handles all player data and uses them to check certain

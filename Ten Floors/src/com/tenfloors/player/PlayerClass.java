@@ -1,3 +1,4 @@
+package com.tenfloors.player;
 
 public class PlayerClass extends Player {
 
