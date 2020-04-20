@@ -39,7 +39,8 @@ public class Player {
 	 * @param intelligence is the player's intelligence score.
 	 * @param wisdom       is the player's wisdom score.
 	 */
-	public Player(String playerName, int strength, int dexterity, int constitution, int intelligence, int wisdom, int hitPoints) {
+	public Player(String playerName, int strength, int dexterity, int constitution, int intelligence, int wisdom,
+			int hitPoints) {
 		this.playerName = playerName;
 		this.strength = strength;
 		this.dexterity = dexterity;
@@ -151,12 +152,31 @@ public class Player {
 	}
 
 	/**
+	 * Gives the modifier for the current ability score.
+	 *
+	 * @param abilityScore is the ability score to calculate the modifier for.
+	 * @return the modifier for the ability score.
+	 */
+	public static int abilityModifer(int abilityScore) {
+		return (int) Math.floor((float) (abilityScore - 10) / 2);
+	}
+
+	/**
 	 * Returns the player's current hit points.
 	 *
 	 * @return player's hit points.
 	 */
 	public int getHitPoints() {
 		return hitPoints;
+	}
+
+	/**
+	 * Sets the player's hit points to a certain value.
+	 *
+	 * @param hp is the hit points it will be set to.
+	 */
+	public void setHitPoints(int hp) {
+		hitPoints = hp;
 	}
 
 	/**
@@ -175,14 +195,14 @@ public class Player {
 	 */
 	public void createPlayerClass(PlayerClasses playerClass) {
 		switch (playerClass) {
-		    case KNIGHT:
-		    	createKnight();
-		    case CLERIC:
-		    	createCleric();
-		    case WIZARD:
-		    	createWizard();
-		    case RANGER:
-		    	createRanger();
+		case KNIGHT:
+			createKnight();
+		case CLERIC:
+			createCleric();
+		case WIZARD:
+			createWizard();
+		case RANGER:
+			createRanger();
 		}
 	}
 
@@ -190,8 +210,7 @@ public class Player {
 	 * Creates a new knight player.
 	 */
 	public void createKnight() {
-		Knight knight = new Knight(playerName, strength, dexterity, constitution,
-				intelligence, wisdom, hitPoints);
+		Knight knight = new Knight(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 
 		playerClass = knight;
 	}
@@ -200,8 +219,7 @@ public class Player {
 	 * Creates a new cleric player.
 	 */
 	public void createCleric() {
-		Cleric cleric = new Cleric(playerName, strength, dexterity, constitution,
-				intelligence, wisdom, hitPoints);
+		Cleric cleric = new Cleric(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 
 		playerClass = cleric;
 	}
@@ -210,8 +228,7 @@ public class Player {
 	 * Creates a new wizard player.
 	 */
 	public void createWizard() {
-		Wizard wizard = new Wizard(playerName, strength, dexterity, constitution,
-				intelligence, wisdom, hitPoints);
+		Wizard wizard = new Wizard(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 
 		playerClass = wizard;
 	}
@@ -220,9 +237,17 @@ public class Player {
 	 * Creates a new ranger player.
 	 */
 	public void createRanger() {
-		Ranger ranger = new Ranger(playerName, strength, dexterity, constitution,
-				intelligence, wisdom, hitPoints);
+		Ranger ranger = new Ranger(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 
 		playerClass = ranger;
+	}
+
+	/**
+	 * Gets the player's class.
+	 *
+	 * @return the player's class.
+	 */
+	public PlayerClass getPlayerClass() {
+		return playerClass;
 	}
 }

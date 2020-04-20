@@ -1,4 +1,5 @@
 
+
 /**
  * An enumeration to represent each player class.
  *
