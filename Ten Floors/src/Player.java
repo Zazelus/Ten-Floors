@@ -21,6 +21,7 @@ public class Player {
 	private int constitution;
 	private int intelligence;
 	private int wisdom;
+	private int hitPoints;
 
 	/**
 	 * Creates a new player object.
@@ -36,13 +37,14 @@ public class Player {
 	 * @param intelligence is the player's intelligence score.
 	 * @param wisdom       is the player's wisdom score.
 	 */
-	public Player(String playerName, int strength, int dexterity, int constitution, int intelligence, int wisdom) {
+	public Player(String playerName, int strength, int dexterity, int constitution, int intelligence, int wisdom, int hitPoints) {
 		this.playerName = playerName;
 		this.strength = strength;
 		this.dexterity = dexterity;
 		this.constitution = constitution;
 		this.intelligence = intelligence;
 		this.wisdom = wisdom;
+		this.hitPoints = hitPoints;
 	}
 
 	// Getters and setters section.
@@ -146,4 +148,67 @@ public class Player {
 		wisdom += mod;
 	}
 
+	/**
+	 * Returns the player's current hit points.
+	 *
+	 * @return player's hit points.
+	 */
+	public int getHitPoints() {
+		return hitPoints;
+	}
+
+	/**
+	 * Modifies the hit points by a specific number.
+	 *
+	 * @param mod is how much the hit points will be modified by.
+	 */
+	public void modifyHitPoints(int mod) {
+		hitPoints += mod;
+	}
+
+	/**
+	 * Creates a specific class depending on the type of player class.
+	 *
+	 * @param playerClass is an enumeration representing a class.
+	 */
+	public void createPlayerClass(PlayerClass playerClass) {
+		switch (playerClass) {
+		    case KNIGHT:
+		    	createKnight();
+		    case CLERIC:
+		    	createCleric();
+		    case WIZARD:
+		    	createWizard();
+		    case RANGER:
+		    	createRanger();
+		}
+	}
+
+	public Knight createKnight() {
+		Knight knight = new Knight(playerName, strength, dexterity, constitution,
+				intelligence, wisdom, hitPoints);
+
+		return knight;
+	}
+
+	public Cleric createCleric() {
+		Cleric cleric = new Cleric(playerName, strength, dexterity, constitution,
+				intelligence, wisdom, hitPoints);
+
+		return cleric;
+	}
+
+	public Wizard createWizard() {
+		Wizard wizard = new Wizard(playerName, strength, dexterity, constitution,
+				intelligence, wisdom, hitPoints);
+
+		return wizard;
+	}
+
+	public Ranger createRanger() {
+		Ranger ranger = new Ranger(playerName, strength, dexterity, constitution,
+				intelligence, wisdom, hitPoints);
+
+		return ranger;
+	}
 }
