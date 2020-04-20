@@ -1,5 +1,5 @@
 
-public class Cleric extends Player {
+public class Cleric extends PlayerClass {
 
 	public Cleric(String playerName, int strength, int dexterity, int constitution,
 			int intelligence, int wisdom, int hitPoints) {

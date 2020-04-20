@@ -23,6 +23,8 @@ public class Player {
 	private int wisdom;
 	private int hitPoints;
 
+	private PlayerClass playerClass;
+
 	/**
 	 * Creates a new player object.
 	 *
@@ -171,7 +173,7 @@ public class Player {
 	 *
 	 * @param playerClass is an enumeration representing a class.
 	 */
-	public void createPlayerClass(PlayerClass playerClass) {
+	public void createPlayerClass(PlayerClasses playerClass) {
 		switch (playerClass) {
 		    case KNIGHT:
 		    	createKnight();
@@ -186,49 +188,41 @@ public class Player {
 
 	/**
 	 * Creates a new knight player.
-	 *
-	 * @return the knight object.
 	 */
-	public Knight createKnight() {
+	public void createKnight() {
 		Knight knight = new Knight(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
 
-		return knight;
+		playerClass = knight;
 	}
 
 	/**
 	 * Creates a new cleric player.
-	 *
-	 * @return the knight object.
 	 */
-	public Cleric createCleric() {
+	public void createCleric() {
 		Cleric cleric = new Cleric(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
 
-		return cleric;
+		playerClass = cleric;
 	}
 
 	/**
 	 * Creates a new wizard player.
-	 *
-	 * @return the knight object.
 	 */
-	public Wizard createWizard() {
+	public void createWizard() {
 		Wizard wizard = new Wizard(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
 
-		return wizard;
+		playerClass = wizard;
 	}
 
 	/**
 	 * Creates a new ranger player.
-	 *
-	 * @return the knight object.
 	 */
-	public Ranger createRanger() {
+	public void createRanger() {
 		Ranger ranger = new Ranger(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
 
-		return ranger;
+		playerClass = ranger;
 	}
 }

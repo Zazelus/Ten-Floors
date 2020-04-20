@@ -1,10 +1,10 @@
 
-/**
- * An enumeration to represent each player class.
- *
- * @author Zaezul
- * @version 04.20.2020
- */
-public enum PlayerClass {
-	KNIGHT, CLERIC, WIZARD, RANGER;
+public class PlayerClass extends Player {
+
+	public PlayerClass(String playerName, int strength, int dexterity, int constitution,
+			int intelligence, int wisdom, int hitPoints) {
+
+		super(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
+	}
+
 }
