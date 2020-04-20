@@ -184,6 +184,11 @@ public class Player {
 		}
 	}
 
+	/**
+	 * Creates a new knight player.
+	 *
+	 * @return the knight object.
+	 */
 	public Knight createKnight() {
 		Knight knight = new Knight(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
@@ -191,6 +196,11 @@ public class Player {
 		return knight;
 	}
 
+	/**
+	 * Creates a new cleric player.
+	 *
+	 * @return the knight object.
+	 */
 	public Cleric createCleric() {
 		Cleric cleric = new Cleric(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
@@ -198,6 +208,11 @@ public class Player {
 		return cleric;
 	}
 
+	/**
+	 * Creates a new wizard player.
+	 *
+	 * @return the knight object.
+	 */
 	public Wizard createWizard() {
 		Wizard wizard = new Wizard(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
@@ -205,6 +220,11 @@ public class Player {
 		return wizard;
 	}
 
+	/**
+	 * Creates a new ranger player.
+	 *
+	 * @return the knight object.
+	 */
 	public Ranger createRanger() {
 		Ranger ranger = new Ranger(playerName, strength, dexterity, constitution,
 				intelligence, wisdom, hitPoints);
