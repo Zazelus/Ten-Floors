@@ -14,8 +14,6 @@ public class FloorGenerator {
 
 	private String[][] dungeonFloor;
 
-	private int height;
-	private int width;
 
 	/**
 	 * Creates a new FloorGenerator object.
@@ -24,10 +22,7 @@ public class FloorGenerator {
 	 * @throws FileNotFoundException is thrown if the file is not found.
 	 */
 	public FloorGenerator(String dungeonFile, int height, int width) throws FileNotFoundException {
-		this.height = height;
-		this.width = width;
-
-		dungeonFloor = readDungeonFile(dungeonFile, this.height, this.width);
+		dungeonFloor = readDungeonFile(dungeonFile, height, width);
 	}
 
 	/**
@@ -38,25 +33,6 @@ public class FloorGenerator {
 	public String[][] getDungeon() {
 		return dungeonFloor;
 	}
-
-	/**
-	 * Returns the current dungeon's height.
-	 *
-	 * @return height as an integer.
-	 */
-	public int getDungeonHeight() {
-		return height;
-	}
-
-	/**
-	 * Returns the current dungeon's width.
-	 *
-	 * @return width as an integer.
-	 */
-	public int getDungeonWidth() {
-		return width;
-	}
-
 	/**
 	 * Returns the dungeon read from the file in array form.
 	 *
@@ -75,17 +51,19 @@ public class FloorGenerator {
 		int colIndex = 0;
 
 		while (file.hasNextLine()) {
-			if (colIndex == width + 1) {
-				colIndex = 0;
-				rowIndex++;
-			}
-
 			String line = file.nextLine();
+
 			String[] lineSplit = line.split(", *");
 
-			floorArray[rowIndex][colIndex] = lineSplit[colIndex];
+			while (colIndex != width) {
+				floorArray[rowIndex][colIndex] = lineSplit[colIndex];
 
-			colIndex++;
+				colIndex++;
+			}
+
+			colIndex = 0;
+
+			rowIndex++;
 		}
 
 		file.close();
