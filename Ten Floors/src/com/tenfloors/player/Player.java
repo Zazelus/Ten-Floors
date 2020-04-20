@@ -28,6 +28,8 @@ public class Player {
 
 	private PlayerClass playerClass;
 
+	public static int playerExp;
+
 	/**
 	 * Creates a new player object.
 	 *
