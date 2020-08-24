@@ -10,4 +10,8 @@ public class Ranger extends PlayerClass {
 		super(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 	}
 
+	public String toString() {
+		return "Ranger";
+	}
+
 }

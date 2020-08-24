@@ -43,4 +43,9 @@ public class Knight extends PlayerClass {
 		setHitPoints(hitPoints);
 	}
 
+	@Override
+	public String toString() {
+		return "Knight";
+	}
+
 }

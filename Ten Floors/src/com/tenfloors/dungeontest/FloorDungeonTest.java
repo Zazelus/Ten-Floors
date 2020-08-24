@@ -1,19 +1,12 @@
 package com.tenfloors.dungeontest;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 
 import org.junit.Test;
 
 import com.tenfloors.dungeon.FloorGenerator;
-import com.tenfloors.events.BossEvent;
-import com.tenfloors.events.CombatEvent;
-import com.tenfloors.events.DialogueEvent;
-import com.tenfloors.events.EmptyRoomEvent;
-import com.tenfloors.events.ShopEvent;
-import com.tenfloors.events.TreasureEvent;
 
 public class FloorDungeonTest {
 

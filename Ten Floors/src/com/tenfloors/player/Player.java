@@ -26,7 +26,7 @@ public class Player {
 	private int wisdom;
 	private int hitPoints;
 
-	private PlayerClass playerClass;
+	public PlayerClass playerClass = null;
 
 	public static int playerExp;
 
@@ -194,24 +194,6 @@ public class Player {
 	}
 
 	/**
-	 * Creates a specific class depending on the type of player class.
-	 *
-	 * @param playerClass is an enumeration representing a class.
-	 */
-	public void createPlayerClass(PlayerClasses playerClass) {
-		switch (playerClass) {
-		case KNIGHT:
-			createKnight();
-		case CLERIC:
-			createCleric();
-		case WIZARD:
-			createWizard();
-		case RANGER:
-			createRanger();
-		}
-	}
-
-	/**
 	 * Creates a new knight player.
 	 */
 	public void createKnight() {
@@ -247,12 +229,4 @@ public class Player {
 		playerClass = ranger;
 	}
 
-	/**
-	 * Gets the player's class.
-	 *
-	 * @return the player's class.
-	 */
-	public PlayerClass getPlayerClass() {
-		return playerClass;
-	}
 }

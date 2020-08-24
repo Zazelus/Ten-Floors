@@ -9,5 +9,9 @@ public class Cleric extends PlayerClass {
 
 		super(playerName, strength, dexterity, constitution, intelligence, wisdom, hitPoints);
 	}
+	
+	public String toString() {
+		return "Cleric";
+	}
 
 }
