@@ -35,4 +35,4 @@ How Will Everything Be Accomplished?
 10. Add sounds and music.
 11. Make monster art animated (somehow).
 
-More goals TBD.
+More goals TBD. Also 'polish up' the README.
