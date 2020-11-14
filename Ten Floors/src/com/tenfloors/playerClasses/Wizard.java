@@ -1,4 +1,4 @@
-package com.tenfloors.classes;
+package com.tenfloors.playerClasses;
 
 import com.tenfloors.player.*;
 

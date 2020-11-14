@@ -1,4 +1,4 @@
-package com.tenfloors.classes;
+package com.tenfloors.playerClasses;
 
 import java.util.Random;
 
@@ -43,7 +43,6 @@ public class Knight extends PlayerClass {
 		setHitPoints(hitPoints);
 	}
 
-	@Override
 	public String toString() {
 		return "Knight";
 	}

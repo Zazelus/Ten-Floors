@@ -1,6 +1,6 @@
 package com.tenfloors.player;
 
-import com.tenfloors.classes.*;
+import com.tenfloors.playerClasses.*;
 
 /**
  * The Player class handles all player data and uses them to check certain
@@ -154,6 +154,17 @@ public class Player {
 	 */
 	public void modifyWisdom(int mod) {
 		wisdom += mod;
+	}
+
+	/**
+	 * Resets player skills to standard array.
+	 */
+	public void skillReset() {
+		strength = 10;
+		dexterity = 10;
+		constitution = 10;
+		wisdom = 10;
+		intelligence = 10;
 	}
 
 	/**

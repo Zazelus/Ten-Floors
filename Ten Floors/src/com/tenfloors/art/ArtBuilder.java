@@ -6,6 +6,10 @@ public class ArtBuilder {
 
 	}
 
+	public void printMonster() {
+
+	}
+
 	public void printDragon() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("                 /           /                                               ").append(System.lineSeparator());    //System.lineSeparator() gets us the new line character which is used by the underlying OS.
