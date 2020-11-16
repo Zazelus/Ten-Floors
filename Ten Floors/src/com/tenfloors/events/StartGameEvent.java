@@ -17,6 +17,8 @@ public class StartGameEvent extends Events {
 
 	private Player newPlayer = null;
 
+	public static int skillPoints = 30;
+
 	public StartGameEvent() throws InterruptedException {
 		startGame();
 	}
@@ -98,8 +100,6 @@ public class StartGameEvent extends Events {
 
 		System.out.println("\nNow brave " + newPlayer.playerClass.toString() + ", you must now allocate your skill points accordingly.");
 
-		int skillPoints = 30;
-
 		while (skillPoints != 0) {
 			System.out.println("\nWhich skill would you like to invest points into?");
 
@@ -125,134 +125,76 @@ public class StartGameEvent extends Events {
 
 			switch (Integer.parseInt(userInput)) {
 				case 1:
-					System.out.println("\nHow many points would you like to invest?");
-
-					userInput = console.next();
-
-					while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
-
-						if (Integer.parseInt(userInput) < 0) {
-							System.out.println("\nPlease enter a positive number.");
-						}
-
-						else if (Integer.parseInt(userInput) > skillPoints) {
-							System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
-						}
-
-						userInput = console.next();
-
-					}
-
-					newPlayer.modifyStrength(Integer.parseInt(userInput));
-
-					skillPoints -= Integer.parseInt(userInput);
-
-					System.out.println("You have " + skillPoints + " skill points remaining.");
+					skillModify("STR");
 					break;
 				case 2:
-					System.out.println("\nHow many points would you like to invest?");
-
-					userInput = console.next();
-
-					while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
-
-						if (Integer.parseInt(userInput) < 0) {
-							System.out.println("\nPlease enter a positive number.");
-						}
-
-						else if (Integer.parseInt(userInput) > skillPoints) {
-							System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
-						}
-
-						userInput = console.next();
-
-					}
-
-					newPlayer.modifyDexterity(Integer.parseInt(userInput));
-
-					skillPoints -= Integer.parseInt(userInput);
-
-					System.out.println("You have " + skillPoints + " skill points remaining.");
+					skillModify("DEX");
 					break;
 				case 3:
-					System.out.println("\nHow many points would you like to invest?");
-
-					userInput = console.next();
-
-					while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
-
-						if (Integer.parseInt(userInput) < 0) {
-							System.out.println("\nPlease enter a positive number.");
-						}
-
-						else if (Integer.parseInt(userInput) > skillPoints) {
-							System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
-						}
-
-						userInput = console.next();
-
-					}
-
-					newPlayer.modifyConstitution(Integer.parseInt(userInput));
-
-					skillPoints -= Integer.parseInt(userInput);
-
-					System.out.println("You have " + skillPoints + " skill points remaining.");
+					skillModify("CON");
 					break;
 				case 4:
-					System.out.println("\nHow many points would you like to invest?");
-
-					userInput = console.next();
-
-					while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
-
-						if (Integer.parseInt(userInput) < 0) {
-							System.out.println("\nPlease enter a positive number.");
-						}
-
-						else if (Integer.parseInt(userInput) > skillPoints) {
-							System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
-						}
-
-						userInput = console.next();
-
-					}
-
-					newPlayer.modifyWisdom(Integer.parseInt(userInput));
-
-					skillPoints -= Integer.parseInt(userInput);
-
-					System.out.println("You have " + skillPoints + " skill points remaining.");
+					skillModify("INT");
 					break;
 				case 5:
-					System.out.println("\nHow many points would you like to invest?");
-
-					userInput = console.next();
-
-					while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
-
-						if (Integer.parseInt(userInput) < 0) {
-							System.out.println("\nPlease enter a positive number.");
-						}
-
-						else if (Integer.parseInt(userInput) > skillPoints) {
-							System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
-						}
-
-						userInput = console.next();
-
-					}
-
-					newPlayer.modifyIntelligence(Integer.parseInt(userInput));
-
-					skillPoints -= Integer.parseInt(userInput);
-
-					System.out.println("You have " + skillPoints + " skill points remaining.");
+					skillModify("WIS");
 					break;
 			}
 
 		}
 
+	}
+
+	public String skillDump(int skillPoints) {
+		String userInput = null;
+
+		System.out.println("\nHow many points would you like to invest?");
+
+		userInput = console.next();
+
+		while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
+
+			if (Integer.parseInt(userInput) < 0) {
+				System.out.println("\nPlease enter a positive number.");
+			}
+
+			else if (Integer.parseInt(userInput) > skillPoints) {
+				System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
+			}
+
+			userInput = console.next();
+
+		}
+
+		return userInput;
+	}
+
+	public void skillModify(String skill) {
+		String userInput = null;
+
+		userInput = skillDump(skillPoints);
+
+		switch(skill) {
+			case "STR":
+				newPlayer.modifyStrength(Integer.parseInt(userInput));
+				break;
+			case "DEX":
+				newPlayer.modifyDexterity(Integer.parseInt(userInput));
+				break;
+			case "CON":
+				newPlayer.modifyConstitution(Integer.parseInt(userInput));
+				break;
+			case "INT":
+				newPlayer.modifyIntelligence(Integer.parseInt(userInput));
+				break;
+			case "WIS":
+				newPlayer.modifyWisdom(Integer.parseInt(userInput));
+				break;
+		}
+
+		skillPoints -= Integer.parseInt(userInput);
+
+		System.out.println("You have " + skillPoints + " skill points remaining.");
 	}
 
 	public static void printWithDelays(String data, long delay)
