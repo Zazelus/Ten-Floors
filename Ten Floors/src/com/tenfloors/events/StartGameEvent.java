@@ -19,15 +19,32 @@ public class StartGameEvent extends Events {
 
 	public static int skillPoints = 30;
 
+	/**
+	 * As soon as the class is instantiated, the game starts by using the startGame() method.
+	 *
+	 * @throws InterruptedException handles exceptions related to printWithDelays.
+	 */
 	public StartGameEvent() throws InterruptedException {
 		startGame();
 	}
 
+	/**
+	 * Runs method createCharacter() which will be used for a new character sequence.
+	 * printIntroduction and createCharacter will be coupled in an if/else block once
+	 * methods for saving/loading the game are implemented.
+	 *
+	 * @throws InterruptedException handles exceptions related to printWithDelays.
+	 */
 	public void startGame() throws InterruptedException {
 		//printIntroduction();
 		createCharacter();
 	}
 
+	/**
+	 * Prints the introductory flavor text for the game.
+	 *
+	 * @throws InterruptedException handles exceptions related to printWithDelays.
+	 */
 	public void printIntroduction() throws InterruptedException {
 		System.out.println("!######################################################################################################################################!\n");
 		builder.printDragon();
@@ -69,6 +86,12 @@ public class StartGameEvent extends Events {
 		printWithDelays("...", 500);
 	}
 
+	/**
+	 * Uses several helper methods to create a new character.
+	 * A new character will have all stats set equal to 10, which will change as the players invests points into them.
+	 *
+	 * @throws InterruptedException handles exceptions related to printWithDelays.
+	 */
 	public void createCharacter() throws InterruptedException {
 		System.out.println("\nNewest adventurer of the Ten Floors, what is your name?");
 		userInput = console.next();
@@ -145,7 +168,12 @@ public class StartGameEvent extends Events {
 
 	}
 
-	public String skillDump(int skillPoints) {
+	/**
+	 * A helper method that makes the user put skill points in a specific stat.
+	 *
+	 * @return sends the userInput to skillModify() for manipulation.
+	 */
+	public String skillDump() {
 		String userInput = null;
 
 		System.out.println("\nHow many points would you like to invest?");
@@ -169,10 +197,15 @@ public class StartGameEvent extends Events {
 		return userInput;
 	}
 
+	/**
+	 * A helper method that modifies whichever skill the player decided to put points into.
+	 *
+	 * @param skill is a string which determines the skill to be modified by the switch statement.
+	 */
 	public void skillModify(String skill) {
 		String userInput = null;
 
-		userInput = skillDump(skillPoints);
+		userInput = skillDump();
 
 		switch(skill) {
 			case "STR":
@@ -197,6 +230,13 @@ public class StartGameEvent extends Events {
 		System.out.println("You have " + skillPoints + " skill points remaining.");
 	}
 
+	/**
+	 * Separates flavor text and some other things.
+	 *
+	 * @param data the characters used to separate messages.
+	 * @param delay how many milliseconds each character waits after printing.
+	 * @throws InterruptedException handles exceptions related to printWithDelays.
+	 */
 	public static void printWithDelays(String data, long delay)
 	        throws InterruptedException {
 	    for (char ch:data.toCharArray()) {
