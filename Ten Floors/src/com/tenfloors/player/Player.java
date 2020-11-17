@@ -26,8 +26,9 @@ public class Player {
 	private int wisdom;
 	private int hitPoints;
 
-	public PlayerClass playerClass = null;
+	public static PlayerClass playerClass = null;
 
+	public static int statPoints = 30;
 	public static int playerExp;
 
 	/**

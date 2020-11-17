@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.tenfloors.art.ArtBuilder;
 import com.tenfloors.player.Player;
-import com.tenfloors.player.PlayerClass;
+// import com.tenfloors.player.PlayerClass;
 
 public class StartGameEvent extends Events {
 
@@ -15,9 +15,7 @@ public class StartGameEvent extends Events {
 
 	private String userInput;
 
-	private Player newPlayer = null;
-
-	public static int skillPoints = 30;
+	public static Player newPlayer = null;
 
 	/**
 	 * As soon as the class is instantiated, the game starts by using the startGame() method.
@@ -98,7 +96,7 @@ public class StartGameEvent extends Events {
 
 		newPlayer = new Player(userInput, 10, 10, 10, 10, 10, 10);
 
-		System.out.println("\nWhat is your vocation?");
+		System.out.println("\n" + newPlayer.getName() + ", what is your vocation?");
 
 		System.out.println("\n[1] The stalwart Knight: A vocation dedicated to shurgging off damage as well as dealing it, up front and personal.");
 		System.out.println("[2] The holy Cleric: A vocation that is able to utilize defensive and healing magic, allowing it to stay in the fight longer.");
@@ -121,9 +119,9 @@ public class StartGameEvent extends Events {
 				break;
 		}
 
-		System.out.println("\nNow brave " + newPlayer.playerClass.toString() + ", you must now allocate your skill points accordingly.");
+		System.out.println("\nNow brave " + Player.playerClass.toString() + ", you must now allocate your skill points accordingly.");
 
-		while (skillPoints != 0) {
+		while (Player.statPoints != 0) {
 			System.out.println("\nWhich skill would you like to invest points into?");
 
 			printWithDelays("...", 300);
@@ -173,21 +171,21 @@ public class StartGameEvent extends Events {
 	 *
 	 * @return sends the userInput to skillModify() for manipulation.
 	 */
-	public String skillDump() {
+	public String statDump() {
 		String userInput = null;
 
 		System.out.println("\nHow many points would you like to invest?");
 
 		userInput = console.next();
 
-		while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > skillPoints) {
+		while(Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > Player.statPoints) {
 
 			if (Integer.parseInt(userInput) < 0) {
 				System.out.println("\nPlease enter a positive number.");
 			}
 
-			else if (Integer.parseInt(userInput) > skillPoints) {
-				System.out.println("\nYou don't have enough skill points for this! You have " + skillPoints + " remaining.");
+			else if (Integer.parseInt(userInput) > Player.statPoints) {
+				System.out.println("\nYou don't have enough skill points for this! You have " + Player.statPoints + " remaining.");
 			}
 
 			userInput = console.next();
@@ -205,7 +203,7 @@ public class StartGameEvent extends Events {
 	public void skillModify(String skill) {
 		String userInput = null;
 
-		userInput = skillDump();
+		userInput = statDump();
 
 		switch(skill) {
 			case "STR":
@@ -225,9 +223,9 @@ public class StartGameEvent extends Events {
 				break;
 		}
 
-		skillPoints -= Integer.parseInt(userInput);
+		Player.statPoints -= Integer.parseInt(userInput);
 
-		System.out.println("You have " + skillPoints + " skill points remaining.");
+		System.out.println("You have " + Player.statPoints + " skill points remaining.");
 	}
 
 	/**
