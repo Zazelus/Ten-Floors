@@ -1,10 +1,11 @@
 package com.tenfloors.events;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 import com.tenfloors.art.ArtBuilder;
+import com.tenfloors.art.FlavorText;
 import com.tenfloors.player.Player;
+import com.tenfloors.playerInterfaces.ShowPlayerInfo;
 // import com.tenfloors.player.PlayerClass;
 
 public class StartGameEvent extends Events {
@@ -15,7 +16,7 @@ public class StartGameEvent extends Events {
 
 	private String userInput;
 
-	public static Player newPlayer = null;
+	public static Player player = null;
 
 	/**
 	 * As soon as the class is instantiated, the game starts by using the startGame() method.
@@ -50,38 +51,38 @@ public class StartGameEvent extends Events {
 		System.out.println("# Welcome to The Ten Floors #");
 
 		System.out.println("\nMany centuries ago the great wizard Zaezul fashioned the Ten Floors.");
-		printWithDelays("...", 1500);
+		FlavorText.printWithDelays("...", 1500);
 
 		System.out.println("\nNo one truly knows the true purpose of such a place, however many wondrous "
 				+ "\nartifacts have been uncovered by adventures seeking their fortune, leading to great "
 				+ "\ntechnological advancements across the world.");
-		printWithDelays("...", 2000);
+		FlavorText.printWithDelays("...", 2000);
 
 		System.out.println("\nThrough all this time, not one adventurer has made it to the tenth "
 				+ "\nfloor and come out alive.");
-		printWithDelays("...", 1750);
+		FlavorText.printWithDelays("...", 1750);
 
 		System.out.println("\n What");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n Awaits");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n Us");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n At");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n The");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n End?");
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 
 		System.out.println("\n!######################################################################################################################################!");
 
-		printWithDelays("...", 500);
+		FlavorText.printWithDelays("...", 500);
 	}
 
 	/**
@@ -94,9 +95,9 @@ public class StartGameEvent extends Events {
 		System.out.println("\nNewest adventurer of the Ten Floors, what is your name?");
 		userInput = console.next();
 
-		newPlayer = new Player(userInput, 10, 10, 10, 10, 10, 10);
+		player = new Player(userInput, 10, 10, 10, 10, 10, 10);
 
-		System.out.println("\n" + newPlayer.getName() + ", what is your vocation?");
+		System.out.println("\n" + player.getName() + ", what is your vocation?");
 
 		System.out.println("\n[1] The stalwart Knight: A vocation dedicated to shurgging off damage as well as dealing it, up front and personal.");
 		System.out.println("[2] The holy Cleric: A vocation that is able to utilize defensive and healing magic, allowing it to stay in the fight longer.");
@@ -106,16 +107,16 @@ public class StartGameEvent extends Events {
 
 		switch (Integer.parseInt(userInput)) {
 			case 1:
-				newPlayer.createKnight();
+				player.createKnight();
 				break;
 			case 2:
-				newPlayer.createCleric();
+				player.createCleric();
 				break;
 			case 3:
-				newPlayer.createWizard();
+				player.createWizard();
 				break;
 			case 4:
-				newPlayer.createRanger();
+				player.createRanger();
 				break;
 		}
 
@@ -124,7 +125,7 @@ public class StartGameEvent extends Events {
 		while (Player.statPoints != 0) {
 			System.out.println("\nWhich skill would you like to invest points into?");
 
-			printWithDelays("...", 300);
+			FlavorText.printWithDelays("...", 300);
 
 			System.out.println("\n[1] Strength (STR): Used in strength based saving throws as well as skill checks and determines the strength and skill of melee/ranged attacks with martial weapons.");
 			System.out.println("[2] Dexterity (DEX): Used in dexterity based saving throws as well as skill checks and determines the strength and skill of melee/ranged with finesse-based weapons.");
@@ -132,7 +133,7 @@ public class StartGameEvent extends Events {
 			System.out.println("[4] Wisdom (WIS): Used in wisdom based saving throws as well as skill checks and determines how powerful your wisdom-based skills are.");
 			System.out.println("[5] Intelligence (INT): Used in intelligence based saving throws as well as skill checks and determines how powerful your intelligence-based skills are.");
 
-			printWithDelays("...", 200);
+			FlavorText.printWithDelays("...", 200);
 
 			userInput = console.next();
 
@@ -163,6 +164,8 @@ public class StartGameEvent extends Events {
 			}
 
 		}
+
+		ShowPlayerInfo.showPlayerStats();
 
 	}
 
@@ -207,41 +210,25 @@ public class StartGameEvent extends Events {
 
 		switch(skill) {
 			case "STR":
-				newPlayer.modifyStrength(Integer.parseInt(userInput));
+				player.modifyStrength(Integer.parseInt(userInput));
 				break;
 			case "DEX":
-				newPlayer.modifyDexterity(Integer.parseInt(userInput));
+				player.modifyDexterity(Integer.parseInt(userInput));
 				break;
 			case "CON":
-				newPlayer.modifyConstitution(Integer.parseInt(userInput));
+				player.modifyConstitution(Integer.parseInt(userInput));
 				break;
 			case "INT":
-				newPlayer.modifyIntelligence(Integer.parseInt(userInput));
+				player.modifyIntelligence(Integer.parseInt(userInput));
 				break;
 			case "WIS":
-				newPlayer.modifyWisdom(Integer.parseInt(userInput));
+				player.modifyWisdom(Integer.parseInt(userInput));
 				break;
 		}
 
 		Player.statPoints -= Integer.parseInt(userInput);
 
 		System.out.println("You have " + Player.statPoints + " skill points remaining.");
-	}
-
-	/**
-	 * Separates flavor text and some other things.
-	 *
-	 * @param data the characters used to separate messages.
-	 * @param delay how many milliseconds each character waits after printing.
-	 * @throws InterruptedException handles exceptions related to printWithDelays.
-	 */
-	public static void printWithDelays(String data, long delay)
-	        throws InterruptedException {
-	    for (char ch:data.toCharArray()) {
-	        System.out.print("\n" + ch + "\n");
-
-	        TimeUnit.MILLISECONDS.sleep(delay);
-	    }
 	}
 
 }

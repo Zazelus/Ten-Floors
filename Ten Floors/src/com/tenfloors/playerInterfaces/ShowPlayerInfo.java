@@ -1,5 +1,10 @@
 package com.tenfloors.playerInterfaces;
 
+import com.tenfloors.art.FlavorText;
+import com.tenfloors.events.StartGameEvent;
+import com.tenfloors.leveling.PlayerLevelHandler;
+import com.tenfloors.player.Player;
+
 public class ShowPlayerInfo {
 
 	/**
@@ -22,7 +27,27 @@ public class ShowPlayerInfo {
 	 * etc.
 	 */
 	public static void showPlayerStats() {
+		FlavorText.printSpacerExclamation();
 
+		Player player = StartGameEvent.player;
+
+		System.out.println("\nName: " + player.getName());
+
+		System.out.println("\nClass: " + player.getPlayerClass());
+		System.out.println("Level: " + PlayerLevelHandler.getPlayerLevel());
+
+		System.out.println("\nSTR: " + player.getStrength());
+		System.out.println("DEX: " + player.getDexterity());
+		System.out.println("CON: " + player.getConstitution());
+		System.out.println("WIS: " + player.getWisdom());
+		System.out.println("INT: " + player.getIntelligence());
+
+		System.out.println("\nImmunities: ");
+		System.out.println("Vulnerabilities: ");
+
+		System.out.println("\nConditions: ");
+
+		FlavorText.printSpacerExclamation();
 	}
 
 	/**

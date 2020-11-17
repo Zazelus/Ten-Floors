@@ -58,6 +58,10 @@ public class Player {
 
 	// Getters and setters section.
 
+	public String getPlayerClass() {
+		return playerClass.toString();
+	}
+
 	/**
 	 * Get's the player's name.
 	 *

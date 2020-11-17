@@ -40,4 +40,8 @@ public class PlayerLevelHandler {
 		playerLevel += 1;
 	}
 
+	public static int getPlayerLevel() {
+		return playerLevel;
+	}
+
 }
