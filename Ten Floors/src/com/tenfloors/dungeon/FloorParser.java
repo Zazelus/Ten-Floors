@@ -22,8 +22,9 @@ public class FloorParser {
 	 * Creates a new FloorParser object.
 	 *
 	 * @param dungeonFloor	is the dungeon to be parsed for events.
+	 * @throws InterruptedException
 	 */
-	public FloorParser(String[][] dungeonFloor, int floorNumber) {
+	public FloorParser(String[][] dungeonFloor, int floorNumber) throws InterruptedException {
 		this.dungeonFloor = dungeonFloor;
 
 		height = dungeonFloor.length;
@@ -40,15 +41,16 @@ public class FloorParser {
 	 * challenging and rewarding.
 	 *
 	 * @return the parsed array with events.
+	 * @throws InterruptedException
 	 */
-	public Room[][] parseFloorData(int floorNumber) {
+	public Room[][] parseFloorData(int floorNumber) throws InterruptedException {
 		Room[][] populatedFloor = new Room[height][width];
 
 		for (int i = 0; i < height; i++) {
 			for (int k = 0; k < width; k++) {
 				switch (dungeonFloor[i][k]) {
-					//case "START":
-						//populatedFloor[i][k] = new Start();
+					case "START":
+						populatedFloor[i][k] = new StartRoom();
 					case "WALL":
 						populatedFloor[i][k] = new Wall();
 						break;
@@ -69,6 +71,12 @@ public class FloorParser {
 				    	break;
 				    case "DIALOGUE":
 				    	populatedFloor[i][k] = new Dialogue(floorNumber);
+				    	break;
+				    case "KEY":
+				    	populatedFloor[i][k] = new KeyRoom(floorNumber);
+				    	break;
+				    case "HEAL":
+				    	populatedFloor[i][k] = new HealingRoom(floorNumber);
 				    	break;
 				}
 			}

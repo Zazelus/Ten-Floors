@@ -1,8 +1,8 @@
 package com.tenfloors.events;
 
-public class KeyRoom {
+public class KeyRoom extends Room {
 
-	public KeyRoom() {
+	public KeyRoom(int floorNumber) {
 
 	}
 

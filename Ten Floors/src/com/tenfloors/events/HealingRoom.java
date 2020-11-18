@@ -1,8 +1,8 @@
 package com.tenfloors.events;
 
-public class HealingRoom {
+public class HealingRoom extends Room {
 
-	public HealingRoom() {
+	public HealingRoom(int floorNumber) {
 
 	}
 
