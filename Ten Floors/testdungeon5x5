@@ -1,5 +1,5 @@
 EMPTY,      EMPTY,      MONSTER,        TREASURE,   MONSTER
 EMPTY,      MONSTER,    TREASURE,       MONSTER,    EMPTY
-EMPTY,      SHOP,       MONSTER,        TREASURE,    EMPTY
+EMPTY,      SHOP,       MONSTER,        TREASURE,   EMPTY
 MONSTER,    EMPTY,      EMPTY,          TREASURE,   EMPTY
 TREASURE,   EMPTY,      EMPTY,          EMPTY,      MONSTER

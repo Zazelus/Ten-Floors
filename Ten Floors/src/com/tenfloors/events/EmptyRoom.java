@@ -1,8 +1,8 @@
 package com.tenfloors.events;
 
-public class ShopEvent extends Event {
+public class EmptyRoom extends Room {
 
-	public ShopEvent(int floorNumber) {
+	public EmptyRoom(int floorNumber) {
 		// TODO Auto-generated constructor stub
 	}
 

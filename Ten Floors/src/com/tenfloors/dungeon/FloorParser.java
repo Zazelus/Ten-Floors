@@ -13,7 +13,7 @@ import com.tenfloors.events.*;
 public class FloorParser {
 
 	private String[][] dungeonFloor;
-	private Event[][] parsedFloor;
+	private Room[][] parsedFloor;
 
 	private int height;
 	private int width;
@@ -41,8 +41,8 @@ public class FloorParser {
 	 *
 	 * @return the parsed array with events.
 	 */
-	public Event[][] parseFloorData(int floorNumber) {
-		Event[][] populatedFloor = new Event[height][width];
+	public Room[][] parseFloorData(int floorNumber) {
+		Room[][] populatedFloor = new Room[height][width];
 
 		for (int i = 0; i < height; i++) {
 			for (int k = 0; k < width; k++) {
@@ -50,25 +50,25 @@ public class FloorParser {
 					//case "START":
 						//populatedFloor[i][k] = new Start();
 					case "WALL":
-						populatedFloor[i][k] = new WallEvent();
+						populatedFloor[i][k] = new Wall();
 						break;
 				    case "EMPTY":
-					    populatedFloor[i][k] = new EmptyRoomEvent(floorNumber);
+					    populatedFloor[i][k] = new EmptyRoom(floorNumber);
 					    break;
 				    case "MONSTER":
-					    populatedFloor[i][k] = new CombatEvent(floorNumber);
+					    populatedFloor[i][k] = new MonsterRoom(floorNumber);
 					    break;
 				    case "TREASURE":
-				    	populatedFloor[i][k] = new TreasureEvent(floorNumber);
+				    	populatedFloor[i][k] = new TreasureRoom(floorNumber);
 				    	break;
 				    case "BOSS":
-				    	populatedFloor[i][k] = new BossEvent(floorNumber);
+				    	populatedFloor[i][k] = new BossRoom(floorNumber);
 				    	break;
 				    case "SHOP":
-				    	populatedFloor[i][k] = new ShopEvent(floorNumber);
+				    	populatedFloor[i][k] = new Shop(floorNumber);
 				    	break;
 				    case "DIALOGUE":
-				    	populatedFloor[i][k] = new DialogueEvent(floorNumber);
+				    	populatedFloor[i][k] = new Dialogue(floorNumber);
 				    	break;
 				}
 			}
@@ -82,7 +82,7 @@ public class FloorParser {
 	 *
 	 * @return the floor with events included.
 	 */
-	public Event[][] getParsedFloor() {
+	public Room[][] getParsedFloor() {
 		return parsedFloor;
 	}
 

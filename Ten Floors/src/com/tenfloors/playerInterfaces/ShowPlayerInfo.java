@@ -1,7 +1,7 @@
 package com.tenfloors.playerInterfaces;
 
 import com.tenfloors.art.FlavorText;
-import com.tenfloors.events.StartGameEvent;
+import com.tenfloors.events.StartRoom;
 import com.tenfloors.leveling.PlayerLevelHandler;
 import com.tenfloors.player.Player;
 
@@ -29,7 +29,7 @@ public class ShowPlayerInfo {
 	public static void showPlayerStats() {
 		FlavorText.printSpacerExclamation();
 
-		Player player = StartGameEvent.player;
+		Player player = StartRoom.player;
 
 		System.out.println("\nName: " + player.getName());
 

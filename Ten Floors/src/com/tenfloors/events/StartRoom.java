@@ -8,7 +8,7 @@ import com.tenfloors.player.Player;
 import com.tenfloors.playerInterfaces.ShowPlayerInfo;
 // import com.tenfloors.player.PlayerClass;
 
-public class StartGameEvent extends Event {
+public class StartRoom extends Room {
 
 	private Scanner console = new Scanner(System.in);
 
@@ -21,7 +21,7 @@ public class StartGameEvent extends Event {
 	 *
 	 * @throws InterruptedException handles exceptions related to printWithDelays.
 	 */
-	public StartGameEvent() throws InterruptedException {
+	public StartRoom() throws InterruptedException {
 		startGame();
 	}
 

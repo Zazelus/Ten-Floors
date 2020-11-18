@@ -1,9 +1,9 @@
-import com.tenfloors.events.StartGameEvent;
+import com.tenfloors.events.StartRoom;
 
 public class GameRunner {
 
 	public static void main(String[] args) throws InterruptedException {
-		StartGameEvent newGame = new StartGameEvent();
+		StartRoom newGame = new StartRoom();
 	}
 
 }

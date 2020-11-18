@@ -1,6 +1,6 @@
 package com.tenfloors.events;
 
-public class DungeonTraversal extends Event {
+public class DungeonTraversal extends Room {
 
 	public DungeonTraversal() {
 
