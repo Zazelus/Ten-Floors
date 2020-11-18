@@ -28,7 +28,7 @@ public class Player {
 
 	public static PlayerClass playerClass = null;
 
-	public static int statPoints = 30;
+	public static int statPoints = 25;
 	public static int playerExp;
 
 	/**

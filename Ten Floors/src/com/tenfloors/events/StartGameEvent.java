@@ -126,7 +126,13 @@ public class StartGameEvent extends Events {
 
 		}
 
+		FlavorText.printDotBreak500();
+
 		ShowPlayerInfo.showPlayerStats();
+
+		System.out.println("\nThis is the status screen, when you begin your adventure you may look at the status screen anytime while roaming the map or in combat.");
+		System.out.println("\nThe dungeon is not a forgiving place, invest your stat points and skills accordingly to be as strong as possible with your chosen vocation.");
+		System.out.println("\nGood luck!");
 
 	}
 
