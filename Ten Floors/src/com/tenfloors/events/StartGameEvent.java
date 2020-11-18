@@ -12,8 +12,6 @@ public class StartGameEvent extends Events {
 
 	private Scanner console = new Scanner(System.in);
 
-	private ArtBuilder builder = new ArtBuilder();
-
 	private String userInput;
 
 	public static Player player = null;
@@ -45,44 +43,7 @@ public class StartGameEvent extends Events {
 	 * @throws InterruptedException handles exceptions related to printWithDelays.
 	 */
 	public void printIntroduction() throws InterruptedException {
-		System.out.println("!######################################################################################################################################!\n");
-		builder.printDragon();
-
-		System.out.println("# Welcome to The Ten Floors #");
-
-		System.out.println("\nMany centuries ago the great wizard Zaezul fashioned the Ten Floors.");
-		FlavorText.printWithDelays("...", 1500);
-
-		System.out.println("\nNo one truly knows the true purpose of such a place, however many wondrous "
-				+ "\nartifacts have been uncovered by adventures seeking their fortune, leading to great "
-				+ "\ntechnological advancements across the world.");
-		FlavorText.printWithDelays("...", 2000);
-
-		System.out.println("\nThrough all this time, not one adventurer has made it to the tenth "
-				+ "\nfloor and come out alive.");
-		FlavorText.printWithDelays("...", 1750);
-
-		System.out.println("\n What");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n Awaits");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n Us");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n At");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n The");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n End?");
-		FlavorText.printWithDelays("...", 500);
-
-		System.out.println("\n!######################################################################################################################################!");
-
-		FlavorText.printWithDelays("...", 500);
+		FlavorText.printIntroductionFlavorText();
 	}
 
 	/**
