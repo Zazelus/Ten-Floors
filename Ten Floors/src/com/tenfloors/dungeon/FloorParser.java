@@ -13,7 +13,7 @@ import com.tenfloors.events.*;
 public class FloorParser {
 
 	private String[][] dungeonFloor;
-	private Events[][] parsedFloor;
+	private Event[][] parsedFloor;
 
 	private int height;
 	private int width;
@@ -41,26 +41,35 @@ public class FloorParser {
 	 *
 	 * @return the parsed array with events.
 	 */
-	public Events[][] parseFloorData(int floorNumber) {
-		Events[][] populatedFloor = new Events[height][width];
+	public Event[][] parseFloorData(int floorNumber) {
+		Event[][] populatedFloor = new Event[height][width];
 
 		for (int i = 0; i < height; i++) {
 			for (int k = 0; k < width; k++) {
 				switch (dungeonFloor[i][k]) {
 					//case "START":
 						//populatedFloor[i][k] = new Start();
+					case "WALL":
+						populatedFloor[i][k] = new WallEvent();
+						break;
 				    case "EMPTY":
 					    populatedFloor[i][k] = new EmptyRoomEvent(floorNumber);
+					    break;
 				    case "MONSTER":
 					    populatedFloor[i][k] = new CombatEvent(floorNumber);
+					    break;
 				    case "TREASURE":
 				    	populatedFloor[i][k] = new TreasureEvent(floorNumber);
+				    	break;
 				    case "BOSS":
 				    	populatedFloor[i][k] = new BossEvent(floorNumber);
+				    	break;
 				    case "SHOP":
 				    	populatedFloor[i][k] = new ShopEvent(floorNumber);
+				    	break;
 				    case "DIALOGUE":
 				    	populatedFloor[i][k] = new DialogueEvent(floorNumber);
+				    	break;
 				}
 			}
 		}
@@ -73,7 +82,7 @@ public class FloorParser {
 	 *
 	 * @return the floor with events included.
 	 */
-	public Events[][] getParsedFloor() {
+	public Event[][] getParsedFloor() {
 		return parsedFloor;
 	}
 

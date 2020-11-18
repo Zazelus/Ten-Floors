@@ -1,5 +1,5 @@
 package com.tenfloors.events;
 
-public class TrapEvent extends Events {
+public class TrapEvent extends Event {
 
 }

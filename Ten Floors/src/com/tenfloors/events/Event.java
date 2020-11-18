@@ -1,8 +1,8 @@
 package com.tenfloors.events;
 
-public class Events {
+public class Event {
 
-	public Events() {
+	public Event() {
 
 	}
 

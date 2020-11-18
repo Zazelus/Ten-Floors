@@ -8,7 +8,7 @@ import com.tenfloors.player.Player;
 import com.tenfloors.playerInterfaces.ShowPlayerInfo;
 // import com.tenfloors.player.PlayerClass;
 
-public class StartGameEvent extends Events {
+public class StartGameEvent extends Event {
 
 	private Scanner console = new Scanner(System.in);
 
